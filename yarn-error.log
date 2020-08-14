@@ -1,0 +1,72 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.9.4/libexec/bin/yarn.js install
+
+PATH: 
+  /Users/vovakulikov/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/vovakulikov/Projects/redux-investigate/node_modules/.bin:/Users/vovakulikov/.cargo/bin
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.12.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  TypeError: Path must be a string. Received { react: '^16.12.0', 'react-dom': '^16.12.0' }
+      at assertPath (path.js:28:11)
+      at Object.isAbsolute (path.js:1225:5)
+      at module.exports.exports.default (/usr/local/Cellar/yarn/1.9.4/libexec/lib/cli.js:91259:16)
+      at /usr/local/Cellar/yarn/1.9.4/libexec/lib/cli.js:52276:63
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.9.4/libexec/lib/cli.js:92:30)
+      at /usr/local/Cellar/yarn/1.9.4/libexec/lib/cli.js:103:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "redux-investigate",
+    "version": "1.0.0",
+    "description": "",
+    "main": "todo-action.ts",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/cli": "^7.8.3",
+      "@babel/core": "^7.8.3",
+      "@babel/plugin-proposal-class-properties": "^7.8.3",
+      "@babel/plugin-proposal-decorators": "^7.8.3",
+      "@babel/plugin-proposal-export-default-from": "^7.8.3",
+      "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+      "@babel/preset-env": "^7.8.3",
+      "@babel/preset-react": "^7.8.3",
+      "@babel/preset-typescript": "^7.8.3",
+      "babel-loader": "^8.0.6",
+      "css-loader": "^3.4.2",
+      "fork-ts-checker-webpack-plugin": "^2.0.0",
+      "html-webpack-plugin": "^3.2.0",
+      "node-sass": "^4.13.0",
+      "react-hot-loader": "^4.12.18",
+      "sass-loader": "^8.0.2",
+      "style-loader": "^1.1.2",
+      "webpack": "^4.41.5",
+      "webpack-cli": "^3.3.10",
+      "webpack-dev-server": "^3.10.1"
+    },
+    "dependencies": {
+      "dependencies": {
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+      }
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

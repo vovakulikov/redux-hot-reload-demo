@@ -1,25 +1,25 @@
-import React, { Fragment, useState } from 'react'
+import React, { Dispatch, Fragment, useCallback, useState } from 'react'
 
 import Footer from './Footer'
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 
-function StateLostChecker () {
+export function FuncCounter () {
   const [counter, setCounter] = useState(0);
   
-  const handleIncClick = () => {
-    setCounter(counter + 2)
-  };
+  const handleIncClick = useCallback(() => {
+    setCounter((counter) => counter + 1)
+  }, []);
   
-  const handleDecClick = () => {
-    setCounter(counter - 1)
-  };
+  const handleDecClick = useCallback(() => {
+    setCounter((counter) => counter - 1)
+  }, []);
   
   return (
     <Fragment>
       <h1>Function counter</h1>
       <button onClick={handleDecClick}>dec</button>
-      { `This is counter between buttons ${counter}`}
+      { `This is counter between buttonsssss ${counter}`}
       <button onClick={handleIncClick}>inc</button>
     </Fragment>
     
@@ -35,7 +35,7 @@ class ClassCounter extends React.Component<any, any> {
   };
   
   handleIncClick = () => {
-    this.setState({ counter: this.state.counter + 2 })
+    this.setState({ counter: this.state.counter + 10 })
   };
   
   render() {
@@ -51,15 +51,30 @@ class ClassCounter extends React.Component<any, any> {
     )
   }
 }
-// This is root app component which contains all other container component which connected to redux store
-const App = () => (
-  <div>
-    <StateLostChecker/>
-    <ClassCounter/>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
-);
+
+export type IProps = {
+  withRender?: boolean;
+  dispatch?: Dispatch<any>;
+}
+const App = (props: IProps) => {
+  // let dispatch = useDispatch();
+  //
+  // useEffect(() => () => {
+  //   dispatch(resetTodos());
+  // }, []);
+  
+  const { withRender = true } = props;
+
+  return (
+    <div>
+      <FuncCounter/>
+      <ClassCounter/>
+    
+      <AddTodo/>
+      { withRender  && <VisibleTodoList /> }
+      <Footer />
+    </div>
+  );
+};
 
 export default App

@@ -13,7 +13,8 @@ export type ITodo = {
   completed: boolean
 }
 
+
 export type IState = {
-  todos: Array<ITodo>;
+  todos: Record<ITodoId, ITodo>;
   visibilityFilter: VisibilityFilter
 }

@@ -5,7 +5,8 @@ let nextTodoId = 0;
 // Action types
 export enum ActionTypes {
   addTodo = 'ADD_TODO',
-  toggleTodo = 'TOGGLE_TODO'
+  toggleTodo = 'TOGGLE_TODO',
+  resetTodos = 'RESET_TODOS'
 }
 
 export type IAddTodoAction = {
@@ -19,7 +20,11 @@ export type IToggleTodoAction = {
   id: ITodoId,
 }
 
-export type ITodoAction = IAddTodoAction | IToggleTodoAction;
+export type IResetTodosAction = {
+  type: typeof ActionTypes.resetTodos,
+}
+
+export type ITodoAction = IAddTodoAction | IToggleTodoAction | IResetTodosAction;
 
 // Action creators
 export const addTodo = (text: string): IAddTodoAction => ({
@@ -31,5 +36,9 @@ export const addTodo = (text: string): IAddTodoAction => ({
 export const toggleTodo = (id: ITodoId): IToggleTodoAction => ({
   type: ActionTypes.toggleTodo,
   id
+});
+
+export const resetTodos = (): IResetTodosAction => ({
+  type: ActionTypes.resetTodos,
 });
 

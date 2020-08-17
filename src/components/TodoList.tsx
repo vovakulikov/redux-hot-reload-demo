@@ -8,16 +8,20 @@ export type IProps = {
   toggleTodo: (id: ITodoId) => void;
 }
 
-const TodoList = ({ todos, toggleTodo }: IProps) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => toggleTodo(todo.id)}
-      />
-    )}
-  </ul>
-);
+const TodoList = ({ todos, toggleTodo }: IProps) => {
+  
+  return (
+    <ul>
+      
+      {todos.slice(0, 100).map(todo =>
+        <Todo
+          key={todo.id}
+          {...todo}
+          onClick={() => toggleTodo(todo.id)}
+        />
+      )}
+    </ul>
+  );
+}
 
 export default TodoList

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server --config ./webpack.config.js --progress --colors --hot"
+    "serve": "webpack-dev-server --config ./webpack.config.js --progress --colors",
+    "build": "webpack --prod"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.1",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "babel-loader": "^8.0.6",
@@ -26,6 +28,7 @@
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.0",
     "react-hot-loader": "^4.12.18",
+    "react-refresh": "^0.8.3",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.2",
     "typescript": "^3.7.4",

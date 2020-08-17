@@ -3,27 +3,28 @@ import React from 'react'
 import FilterLink from '../containers/FilterLink'
 import { VisibilityFilter } from "../types/common-types";
 
-const Footer = () => (
-  <div>
-    <span>Show: </span>
-    <FilterLink
-      filter={VisibilityFilter.SHOW_ALL}>
+export default function Footer () {
+  return (
+    <div>
+      <span>Show: </span>
+      <FilterLink
+        filter={VisibilityFilter.SHOW_ALL}>
       
-      All
-    </FilterLink>
+        All
+      </FilterLink>
     
-    <FilterLink
-      filter={VisibilityFilter.SHOW_ACTIVE}>
+      <FilterLink
+        filter={VisibilityFilter.SHOW_ACTIVE}>
       
-      Active
-    </FilterLink>
+        Active
+      </FilterLink>
     
-    <FilterLink
-      filter={VisibilityFilter.SHOW_COMPLETED}>
-  
-      Completed
-    </FilterLink>
-  </div>
-);
+      <FilterLink
+        filter={VisibilityFilter.SHOW_COMPLETED}>
+      
+        Completed
+      </FilterLink>
+    </div>
+  );
+};
 
-export default Footer

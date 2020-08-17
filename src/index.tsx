@@ -1,7 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-
-import App from './hot-app'
+import App from './another-app-loader';
 
 render(
   <App />,

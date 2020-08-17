@@ -1,16 +1,14 @@
-import React, { Fragment, useState, Suspense } from 'react';
-
-const LazyAnotherApp = React.lazy(() => import('./another-app'));
+import React, { Fragment, useState } from 'react';
+import AnotherApp from "./another-app";
 
 function AnotherAppLoader() {
   const [active, setActive] = useState(false);
   
   return (
     <Fragment>
-      { active ?
-        <Suspense fallback={null}>
-          <LazyAnotherApp/>
-        </Suspense>: 'Press button to load another todo app'
+      { active
+        ? <AnotherApp/>
+        : 'Press button to load another todo app'
       }
 
       <button onClick={() => setActive(!active)}>{active ? 'Remove' : 'Load'}</button>

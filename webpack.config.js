@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -14,7 +14,7 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
-  mode: "development",
+  mode: "production",
   devtool: 'source-map',
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx",],
@@ -45,10 +45,13 @@ module.exports = {
       },
     ]
   },
+  devServer: {
+    hot: false
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    new ForkTsCheckerWebpackPlugin(),
+    // new ForkTsCheckerWebpackPlugin(),
   ]
 };

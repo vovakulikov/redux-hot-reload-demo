@@ -1,10 +1,9 @@
-import React, { Dispatch } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useCallback, useEffect } from "react";
 
 import TodoList from '../components/TodoList'
-import { ITodoAction, toggleTodo } from '../actions/todo-action'
-import { IState, VisibilityFilter } from '../types/common-types';
-import { ITodo } from "../types/common-types";
+// import { IState, VisibilityFilter } from '../types/common-types';
+import { IState, ITodo, VisibilityFilter } from "../types/common-types";
+import { useSelector } from "react-redux";
 
 
 const getVisibleTodos = (todos: Array<ITodo>, filter: VisibilityFilter): Array<ITodo> => {
@@ -23,12 +22,18 @@ const getVisibleTodos = (todos: Array<ITodo>, filter: VisibilityFilter): Array<I
 // TODO [VK] Research why useSelector does not infer return value of selector
 // right now you should pass generic of return value type (in case below this is Array<ITodo>)
 export default function() {
-  const todos = useSelector<IState, Array<ITodo>>((state) => getVisibleTodos(state.todos, state.visibilityFilter));
-  const dispatch = useDispatch<Dispatch<ITodoAction>>();
+  let todos: Array<ITodo> = useSelector<IState, Array<ITodo>>((state) => getVisibleTodos(Object.values(state.todos), state.visibilityFilter));
+  
+  // let dispatch = useDispatch<Dispatch<ITodoAction>>();
+  const handleToggle = useCallback((id) => {
+    console.log(id);
+  }, []);
+  
+  useEffect(() => () => { todos = null }, []);
   
   return (
     <TodoList
       todos={todos}
-      toggleTodo={(id) => dispatch(toggleTodo(id))}/>
+      toggleTodo={handleToggle}/>
   );
 }

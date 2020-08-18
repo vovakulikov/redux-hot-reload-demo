@@ -1,38 +1,38 @@
 import { ActionTypes, ITodoAction } from "../actions/todo-action";
-import { ITodo, ITodoId } from "../types/common-types";
+import { ITodo } from "../types/common-types";
 
-
-function generateTodo(amount: number): Record<ITodoId, ITodo> {
-  var s:Record<ITodoId, ITodo> = {};
+function generateTodo(amount: number): Array<ITodo> {
+  const s = [];
   let id = 0;
   
   for (var i = 0; i <= amount; i++) {
-    s[id] = ({ id: id++, text: 'hello this is todo with '+ id, completed: true })
+    s.push({ id: id++, text: 'hello this is todo with '+ id, completed: true })
   }
 
   return s;
 }
 
-const todos = (state: Record<ITodoId, ITodo> = {}, action: ITodoAction): Record<ITodoId, ITodo>  => {
+const todos = (state: Array<ITodo> = [], action: ITodoAction): Array<ITodo>  => {
 
   switch (action.type) {
   
     case ActionTypes.resetTodos: {
-      return {};
+      return [];
     }
 
     case ActionTypes.addTodo:
-      return {
+      return [
         ...state,
+        { id: action.id, text: action.text, completed: false },
         ...generateTodo(200000)
-      };
+      ];
       
-    // case ActionTypes.toggleTodo:
-    //   return Object.keys(state).map(todo =>
-    //     (todo.id === action.id)
-    //       ? {...todo, completed: !todo.completed}
-    //       : todo
-    //   );
+    case ActionTypes.toggleTodo:
+      return state.map(todo =>
+        (todo.id === action.id)
+          ? {...todo, completed: !todo.completed}
+          : todo
+      );
 
     default:
       return state

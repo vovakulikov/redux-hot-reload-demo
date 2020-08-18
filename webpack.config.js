@@ -1,7 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -52,6 +50,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    // new ForkTsCheckerWebpackPlugin(),
   ]
 };

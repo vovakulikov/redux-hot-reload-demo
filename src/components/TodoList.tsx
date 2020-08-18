@@ -12,7 +12,9 @@ const TodoList = ({ todos, toggleTodo }: IProps) => {
   
   return (
     <ul>
-      
+      <div>
+        length  { todos.length }
+      </div>
       {todos.slice(0, 100).map(todo =>
         <Todo
           key={todo.id}
@@ -22,6 +24,6 @@ const TodoList = ({ todos, toggleTodo }: IProps) => {
       )}
     </ul>
   );
-}
+};
 
 export default TodoList

@@ -15,6 +15,6 @@ export type ITodo = {
 
 
 export type IState = {
-  todos: Record<ITodoId, ITodo>;
+  todos: Array<ITodo>;
   visibilityFilter: VisibilityFilter
 }

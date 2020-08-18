@@ -13,9 +13,12 @@ const TodoList = ({ todos, toggleTodo }: IProps) => {
   return (
     <ul>
       <div>
-        length  { todos.length }
+        length { todos.length }
       </div>
-      {todos.slice(0, 100).map(todo =>
+      
+      <div> First five records </div>
+
+      {todos.slice(0, 5).map(todo =>
         <Todo
           key={todo.id}
           {...todo}

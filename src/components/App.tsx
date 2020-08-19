@@ -8,7 +8,7 @@ function StateLostChecker () {
   const [counter, setCounter] = useState(0);
   
   const handleIncClick = () => {
-    setCounter(counter + 2)
+    setCounter(counter + 20)
   };
   
   const handleDecClick = () => {

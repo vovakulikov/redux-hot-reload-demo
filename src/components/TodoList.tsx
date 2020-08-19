@@ -20,4 +20,4 @@ const TodoList = ({ todos, toggleTodo }: IProps) => (
   </ul>
 );
 
-export default TodoList
+export default TodoList;

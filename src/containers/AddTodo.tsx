@@ -1,9 +1,11 @@
-import React, { useCallback, useRef } from 'react'
-import { addTodo } from '../actions/todo-action'
-import { useDispatch } from "react-redux";
+import React, { Dispatch, useCallback, useRef } from 'react'
+import { addTodo, ITodoAction } from '../actions/todo-action'
 
-export default function AddTodo() {
-  const dispatch = useDispatch();
+export type IProps = {
+  dispatch: Dispatch<ITodoAction>;
+};
+
+export default function AddTodo(props: IProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -13,11 +15,11 @@ export default function AddTodo() {
       return
     }
     
-    dispatch(addTodo(value));
+    props.dispatch(addTodo(value));
     
     // @ts-ignore
     inputRef.current.value = ''
-  }, []);
+  }, [props.dispatch]);
 
   return (
     <div>

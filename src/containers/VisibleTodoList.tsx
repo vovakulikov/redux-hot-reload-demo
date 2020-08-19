@@ -2,7 +2,6 @@ import React, { Dispatch, useCallback } from "react";
 
 import TodoList from '../components/TodoList'
 import { IState, ITodo, VisibilityFilter } from "../types/common-types";
-import { useDispatch, useSelector } from "react-redux";
 import { ITodoAction, toggleTodo } from "../actions/todo-action";
 
 const getVisibleTodos = (todos: Array<ITodo>, filter: VisibilityFilter): Array<ITodo> => {
@@ -18,10 +17,14 @@ const getVisibleTodos = (todos: Array<ITodo>, filter: VisibilityFilter): Array<I
   }
 };
 
-export default function() {
-  const todos: Array<ITodo> = useSelector<IState, Array<ITodo>>((state) => getVisibleTodos(state.todos, state.visibilityFilter));
-  const dispatch = useDispatch<Dispatch<ITodoAction>>();
-  const handleToggle = useCallback((id) => dispatch(toggleTodo(id)), []);
+export type IProps = {
+  state: IState;
+  dispatch: Dispatch<ITodoAction>;
+}
+
+export default function(props: IProps) {
+  const todos: Array<ITodo> = getVisibleTodos(props.state.todos, props.state.visibilityFilter);//useSelector<IState, Array<ITodo>>((state) => );
+  const handleToggle = useCallback((id) => props.dispatch(toggleTodo(id)), [props.dispatch]);
   
   return (
     <TodoList

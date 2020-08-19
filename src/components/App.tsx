@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
 
-import Footer from './Footer'
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
+import { IState } from "../types/common-types";
 
-const App = () => {
+export type IProps = {
+  state: IState;
+  dispatch: Dispatch<any>
+}
+
+const App = (props: IProps) => {
 
   return (
     <div>
-      <AddTodo/>
-      <VisibleTodoList />
-      <Footer />
+      <AddTodo
+        dispatch={props.dispatch} />
+
+      <VisibleTodoList
+        state={props.state}
+        dispatch={props.dispatch}/>
     </div>
   );
 };
